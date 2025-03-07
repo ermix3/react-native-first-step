@@ -1,6 +1,7 @@
-# React Native First Step
+# React Native First Step 🚀
 
+> Welcome to the React Native First Step project! This guide will help you get started with the project and provide information on the backend endpoints.
 
-### For the RestFull Endpoints
+## Backend Endpoints 🔗
 
-You found the code back-end : [simple-post-app](https://gitlab.com/ermix3/simple-post-app)
+You can find the backend code here: [simple-post-app](https://gitlab.com/ermix3/simple-post-app)
