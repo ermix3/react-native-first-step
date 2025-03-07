@@ -1,5 +1,5 @@
 import { Tabs } from 'expo-router';
-import { Chrome as Home, MessageSquare, Calendar, User } from 'lucide-react-native';
+import { Chrome as Home, MessageSquare, Calendar, User, FileText } from 'lucide-react-native';
 
 export default function TabLayout() {
   return (
@@ -21,6 +21,13 @@ export default function TabLayout() {
         options={{
           title: 'Chat',
           tabBarIcon: ({ color, size }) => <MessageSquare size={size} color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="posts"
+        options={{
+          title: 'Posts',
+          tabBarIcon: ({ color, size }) => <FileText size={size} color={color} />,
         }}
       />
       <Tabs.Screen

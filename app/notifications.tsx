@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, FlatList, TouchableOpacity, Alert } from 'react-native';
 import { Stack, useRouter } from 'expo-router';
 import { Check, Trash2, ArrowLeft, CheckCheck } from 'lucide-react-native';
@@ -42,16 +42,27 @@ const initialNotifications = [
   },
 ];
 
+// In a real app, we would use a context or state management library
+// to share this state across components
+export let globalNotifications = initialNotifications;
+export const updateGlobalNotifications = (newNotifications) => {
+  globalNotifications = newNotifications;
+};
+
 export default function NotificationsScreen() {
   const router = useRouter();
   const [notifications, setNotifications] = useState(initialNotifications);
 
+  // Update global notifications when local state changes
+  useEffect(() => {
+    updateGlobalNotifications(notifications);
+  }, [notifications]);
+
   const markAsRead = (id: string) => {
-    setNotifications(
-      notifications.map((notification) =>
-        notification.id === id ? { ...notification, read: true } : notification
-      )
+    const updatedNotifications = notifications.map((notification) =>
+      notification.id === id ? { ...notification, read: true } : notification
     );
+    setNotifications(updatedNotifications);
   };
 
   const deleteNotification = (id: string) => {
@@ -75,9 +86,8 @@ export default function NotificationsScreen() {
   };
 
   const markAllAsRead = () => {
-    setNotifications(
-      notifications.map((notification) => ({ ...notification, read: true }))
-    );
+    const updatedNotifications = notifications.map((notification) => ({ ...notification, read: true }));
+    setNotifications(updatedNotifications);
   };
 
   const renderItem = ({ item }) => (

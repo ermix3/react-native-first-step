@@ -32,3 +32,10 @@ yarn-error.*
 
 # typescript
 *.tsbuildinfo
+
+.vscode/
+.idea/
+.qodo/
+android/
+ios/
+*.iml
